@@ -1,5 +1,6 @@
 import { config } from 'dotenv';
 
+import movies from './modules/movies/movie.docs';
 import comments from './modules/comments/comments.docs';
 import characters from './modules/characters/characters.docs';
 
@@ -21,6 +22,7 @@ const doc = {
   consumes: ['application/json'],
   produces: ['application/json'],
   paths: {
+    ...movies,
     ...comments,
     ...characters,
   },

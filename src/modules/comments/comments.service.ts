@@ -20,7 +20,7 @@ export default class Comments {
       // @ts-ignore
       .create({
         ...params,
-        movieId: this.movieId,
+        movieId: `${this.movieId}`,
       })
       .catch((e) => {
         throw e;
@@ -37,7 +37,7 @@ export default class Comments {
     const comment = await comments
       .findAndCountAll({
         where: {
-          movieId: this.movieId,
+          movieId: `${this.movieId}`,
           ...(from && {
             createdAt: {
               [Op.gt]: from,
@@ -64,11 +64,25 @@ export default class Comments {
     throw createError('Failed to find comments', 400);
   }
 
+  public async getMovieCommentsCount() {
+    const count = await comments
+      .count({
+        where: {
+          movieId: `${this.movieId}`,
+        },
+      })
+      .catch((e) => {
+        throw e;
+      });
+
+    return count;
+  }
+
   public async deleteComment() {
     const comment = comments.destroy({
       where: {
         id: this.id,
-        ...(this.movieId && { movieId: this.movieId }),
+        ...(this.movieId && { movieId: `${this.movieId}` }),
       },
     });
 

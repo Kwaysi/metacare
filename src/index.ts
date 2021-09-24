@@ -6,6 +6,7 @@ import swaggerUI from 'swagger-ui-express';
 
 import doc from './swagger';
 import db from './database/models';
+import movies from './modules/movies/movie.routes';
 import { errorHandler } from './modules/common/utils';
 import comments from './modules/comments/comments.routes';
 import characters from './modules/characters/characters.routes';
@@ -30,6 +31,7 @@ app.use(express.json({ limit: '10mb' }));
 app.disable('x-powered-by');
 
 // Routes
+app.use('/v1/movies', movies);
 app.use('/v1/comments', comments);
 app.use('/v1/characters', characters);
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(doc));

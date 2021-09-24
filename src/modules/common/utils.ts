@@ -103,3 +103,10 @@ export const validate = (req: FullRequest, _res: Response, next: NextFunction) =
     return next(e);
   }
 };
+
+export const toFeetAndInches = (n: number) => {
+  const realFeet = (n * 0.3937) / 12;
+  const feet = Math.floor(realFeet);
+  const inches = ((realFeet - feet) * 12).toFixed(2);
+  return `${feet}ft and ${inches}in`;
+};

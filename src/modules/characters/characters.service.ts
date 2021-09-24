@@ -2,13 +2,11 @@ import axios from 'axios';
 import Cache from 'memory-cache';
 
 export default class Characters {
-  constructor() {}
-
-  private conn = axios.create({
+  private static conn = axios.create({
     baseURL: process.env.DATA_SOURCE,
   });
 
-  public async getCharacterList() {
+  public static async getCharacterList() {
     let characters: any[] = Cache.get('characters');
 
     if (!characters) {
