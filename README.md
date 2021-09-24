@@ -16,10 +16,9 @@ Before getting started make sure to create a .env file and setup the variables b
 
 ``` yarn build ```
 
-### 4 Test 
-
-``` yarn test ```
-
-### 5 Start the application 
+### 4 Start the application 
 
 ``` yarn start ```
+
+Once done hit `/docs` to see the documentation and test the endpoints
+
