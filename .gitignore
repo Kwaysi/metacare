@@ -1,0 +1,17 @@
+dump.rdb
+yarn.lock
+node_modules
+yarn-error.log
+package-lock.json
+
+.env
+.env.staging
+.env.production
+
+build
+coverage
+Dockerfile
+.dockerignore
+workspace.code-workspace
+
+*.Identifier
