@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
 
     for (let movie of movies) {
       getComments.push(
-        new Comments(movie.episodeId)
+        new Comments(movie.id)
           .getMovieCommentsCount()
           .then((commentCount) => ({
             ...movie,

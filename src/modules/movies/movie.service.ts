@@ -22,7 +22,7 @@ export default class Movie {
 
       movies = movies.map((e) => ({
         title: e.title,
-        episodeId: e.episode_id,
+        id: e.episode_id,
         openingCrawl: e.opening_crawl,
         releaseDate: new Date(e.release_date),
       }));
