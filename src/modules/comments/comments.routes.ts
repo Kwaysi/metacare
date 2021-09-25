@@ -32,33 +32,30 @@ router.post(
   }
 );
 
-router.get(
-  '/:movieId',
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const {
-        params: { movieId },
-        query: { page, size, from = '', to = '' },
-      } = req;
+router.get('/:movieId', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const {
+      params: { movieId },
+      query: { page = 1, size = 10, from = '', to = '' },
+    } = req;
 
-      const comments = await new Comments(movieId)
-        .findMovieComments(Number(page), Number(size), String(from), String(to))
-        .catch((e) => {
-          throw e;
-        });
+    const comments = await new Comments(movieId)
+      .findMovieComments(Number(page), Number(size), String(from), String(to))
+      .catch((e) => {
+        throw e;
+      });
 
-      return res.status(200).json(
-        success('Comment retrieved successfully', comments.rows, {
-          page,
-          size,
-          count: comments.count,
-        })
-      );
-    } catch (e) {
-      return next(e);
-    }
+    return res.status(200).json(
+      success('Comment retrieved successfully', comments.rows, {
+        page,
+        size,
+        count: comments.count,
+      })
+    );
+  } catch (e) {
+    return next(e);
   }
-);
+});
 
 router.delete('/:commentId', async (req, res, next) => {
   try {
@@ -74,7 +71,7 @@ router.delete('/:commentId', async (req, res, next) => {
       return res.status(200).json(success('Comment deleted successfully', null));
     }
 
-    minutesToHours
+    minutesToHours;
   } catch (e) {
     return next(e);
   }
