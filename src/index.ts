@@ -35,6 +35,12 @@ app.use('/v1/movies', movies);
 app.use('/v1/comments', comments);
 app.use('/v1/characters', characters);
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(doc));
+app.use('/', async (_req, res) => {
+  return res.send(`
+  <h1>Welcome to Star wars API </h1>
+  <p>Hit an endpoint to get started of visit <a href='/docs'>/docs</a> to get started</p>
+  `);
+});
 
 app.use(errorHandler);
 
